@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AssetManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Asset">
+    <Key>
+      <PropertyRef Name="AssetID" />
+    </Key>
+    <Property Name="AssetID" Type="Guid" Nullable="false" />
+    <Property Name="Barcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SerialNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PMGuide" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AstID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ChildAsset" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GeneralAssetDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecondaryAssetDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Manufacturer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModelNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Building" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Floor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Corridor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RoomNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MERNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EquipSystem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Issued" Type="Boolean" Nullable="false" />
+    <Property Name="FacilitySiteID" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FacilitySite">
+    <Key>
+      <PropertyRef Name="FacilitySiteID" />
+      <PropertyRef Name="IsActive" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="CreatedAt" />
+      <PropertyRef Name="IsDeleted" />
+    </Key>
+    <Property Name="FacilitySiteID" Type="Guid" Nullable="false" />
+    <Property Name="FacilityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+    <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="AssetManagementDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Assets" EntityType="Self.Asset" />
+    <EntitySet Name="FacilitySites" EntityType="Self.FacilitySite" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AssetManagementDBModelStoreContainer" CdmEntityContainer="AssetManagementDBEntities">
+    <EntitySetMapping Name="Assets">
+      <EntityTypeMapping TypeName="AssetManagementDBModel.Asset">
+        <MappingFragment StoreEntitySet="Assets">
+          <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="PMGuide" ColumnName="PMGuide" />
+          <ScalarProperty Name="AstID" ColumnName="AstID" />
+          <ScalarProperty Name="ChildAsset" ColumnName="ChildAsset" />
+          <ScalarProperty Name="GeneralAssetDescription" ColumnName="GeneralAssetDescription" />
+          <ScalarProperty Name="SecondaryAssetDescription" ColumnName="SecondaryAssetDescription" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Corridor" ColumnName="Corridor" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="MERNo" ColumnName="MERNo" />
+          <ScalarProperty Name="EquipSystem" ColumnName="EquipSystem" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Issued" ColumnName="Issued" />
+          <ScalarProperty Name="FacilitySiteID" ColumnName="FacilitySiteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacilitySites">
+      <EntityTypeMapping TypeName="AssetManagementDBModel.FacilitySite">
+        <MappingFragment StoreEntitySet="FacilitySites">
+          <ScalarProperty Name="FacilitySiteID" ColumnName="FacilitySiteID" />
+          <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedAt" ColumnName="ModifiedAt" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

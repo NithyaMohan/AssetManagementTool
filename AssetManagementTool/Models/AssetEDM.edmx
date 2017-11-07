@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AssetManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Assets">
+          <Key>
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="AssetID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar(max)" />
+          <Property Name="SerialNumber" Type="nvarchar(max)" />
+          <Property Name="PMGuide" Type="nvarchar(max)" />
+          <Property Name="AstID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ChildAsset" Type="nvarchar(max)" />
+          <Property Name="GeneralAssetDescription" Type="nvarchar(max)" />
+          <Property Name="SecondaryAssetDescription" Type="nvarchar(max)" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar(max)" />
+          <Property Name="ModelNumber" Type="nvarchar(max)" />
+          <Property Name="Building" Type="nvarchar(max)" />
+          <Property Name="Floor" Type="nvarchar(max)" />
+          <Property Name="Corridor" Type="nvarchar(max)" />
+          <Property Name="RoomNo" Type="nvarchar(max)" />
+          <Property Name="MERNo" Type="nvarchar(max)" />
+          <Property Name="EquipSystem" Type="nvarchar(max)" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="Issued" Type="bit" Nullable="false" />
+          <Property Name="FacilitySiteID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AssetManagementDB.dbo.FacilitySites' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FacilitySites">
+          <Key>
+            <PropertyRef Name="FacilitySiteID" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedAt" />
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="FacilitySiteID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FacilityName" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedAt" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AssetManagementDBModelStoreContainer">
+          <EntitySet Name="Assets" EntityType="Self.Assets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacilitySites" EntityType="Self.FacilitySites" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FacilitySites].[FacilitySiteID] AS [FacilitySiteID], 
+    [FacilitySites].[FacilityName] AS [FacilityName], 
+    [FacilitySites].[IsActive] AS [IsActive], 
+    [FacilitySites].[CreatedBy] AS [CreatedBy], 
+    [FacilitySites].[CreatedAt] AS [CreatedAt], 
+    [FacilitySites].[ModifiedBy] AS [ModifiedBy], 
+    [FacilitySites].[ModifiedAt] AS [ModifiedAt], 
+    [FacilitySites].[IsDeleted] AS [IsDeleted]
+    FROM [dbo].[FacilitySites] AS [FacilitySites]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AssetManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="AssetID" />
+          </Key>
+          <Property Name="AssetID" Type="Guid" Nullable="false" />
+          <Property Name="Barcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PMGuide" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AstID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ChildAsset" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GeneralAssetDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryAssetDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModelNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Building" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Floor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Corridor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RoomNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MERNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EquipSystem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Issued" Type="Boolean" Nullable="false" />
+          <Property Name="FacilitySiteID" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FacilitySite">
+          <Key>
+            <PropertyRef Name="FacilitySiteID" />
+            <PropertyRef Name="IsActive" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedAt" />
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="FacilitySiteID" Type="Guid" Nullable="false" />
+          <Property Name="FacilityName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedAt" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AssetManagementDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Assets" EntityType="Self.Asset" />
+          <EntitySet Name="FacilitySites" EntityType="Self.FacilitySite" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AssetManagementDBModelStoreContainer" CdmEntityContainer="AssetManagementDBEntities">
+          <EntitySetMapping Name="Assets">
+            <EntityTypeMapping TypeName="AssetManagementDBModel.Asset">
+              <MappingFragment StoreEntitySet="Assets">
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="PMGuide" ColumnName="PMGuide" />
+                <ScalarProperty Name="AstID" ColumnName="AstID" />
+                <ScalarProperty Name="ChildAsset" ColumnName="ChildAsset" />
+                <ScalarProperty Name="GeneralAssetDescription" ColumnName="GeneralAssetDescription" />
+                <ScalarProperty Name="SecondaryAssetDescription" ColumnName="SecondaryAssetDescription" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Corridor" ColumnName="Corridor" />
+                <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+                <ScalarProperty Name="MERNo" ColumnName="MERNo" />
+                <ScalarProperty Name="EquipSystem" ColumnName="EquipSystem" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Issued" ColumnName="Issued" />
+                <ScalarProperty Name="FacilitySiteID" ColumnName="FacilitySiteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacilitySites">
+            <EntityTypeMapping TypeName="AssetManagementDBModel.FacilitySite">
+              <MappingFragment StoreEntitySet="FacilitySites">
+                <ScalarProperty Name="FacilitySiteID" ColumnName="FacilitySiteID" />
+                <ScalarProperty Name="FacilityName" ColumnName="FacilityName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedAt" ColumnName="ModifiedAt" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
